@@ -3,14 +3,15 @@ from time import sleep
 import tkinter as tk
 import datetime as dt
 
-route_images = 'screenshots/'
-route_records = 'vids/'
+route_images = 'screenshots/' # debo creaer la carpeta
+route_records = 'vids/'  # debo crear la carpeta
 
 def time_stamp():
     '''
+    Generate a string based on data time to name the files we are saving
     '''
-    date = dt.timedelta(microseconds=1)
-    aux = str(date.days) + '-' + str(date.seconds) + '-' + str(date.microseconds)
+    date = dt.datetime.now()
+    aux = str(date.year) + '-' + str(date.month) + '-' + str(date.day) + '-' + str(date.minute) + '-' + str(date.second) + '-' + str(date.microsecond)
     return aux
 
 camera = PiCamera() # creo un objeto de la clase PiCamera
