@@ -6,6 +6,14 @@ import datetime as dt
 route_images = 'screenshots/' # debo creaer la carpeta
 route_records = 'vids/'  # debo crear la carpeta
 
+camera = PiCamera() # creo un objeto de la clase PiCamera
+
+ventana = tk.Tk()
+ventana.title('night_cosa')
+    
+ventana.buttonframe = tk.Frame(ventana)
+ventana.buttonframe.grid(row=1, column=5, columnspan=2)
+
 def time_stamp():
     '''
     Generate a string based on data time to name the files we are saving
@@ -14,14 +22,12 @@ def time_stamp():
     aux = str(date.year) + '-' + str(date.month) + '-' + str(date.day) + '-' + str(date.minute) + '-' + str(date.second) + '-' + str(date.microsecond)
     return aux
 
-camera = PiCamera() # creo un objeto de la clase PiCamera
-
 try:
     def start():
         '''
         '''
-        camera.start_preview(fullscreen=False, window = (100, 20, 640, 480))  # nos crea un objeto de la clase preview
-
+        camera.start_preview(fullscreen=False, window = (0, 0, 480*0.8, 320*0,8)) # coordenada donde empieza la x, primera coor de la y, tamaño en el eje x, tamaño en el eje y
+        
     def exit():
         '''
         '''
@@ -44,13 +50,13 @@ try:
         '''
         camera.stop_recording()
         pass
-    
+    '''
     ventana = tk.Tk()
     ventana.title('night_cosa')
     
     ventana.buttonframe = tk.Frame(ventana)
     ventana.buttonframe.grid(row=1, column=5, columnspan=2)
-    
+    '''
     tk.Button(ventana.buttonframe, text='start', command=start).grid(row=1, column=2)
     tk.Button(ventana.buttonframe, text='stop', command=exit).grid(row=1, column=1)
     tk.Button(ventana.buttonframe, text='screenshot', command=screenshot).grid(row=1, column=3)
